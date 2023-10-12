@@ -42,6 +42,7 @@ public abstract class HashPai {
 
     public void setaluno(int i, Aluno aluno){
         this.tabela[i] = aluno;
+        this.n_elementos += 1;
     }
 
     public int getTamanho() {
@@ -70,6 +71,6 @@ public abstract class HashPai {
 
     public abstract void inserir (Aluno aluno);
     public abstract Aluno buscar (String identificador,boolean id);
-    public abstract Aluno remover (String identificador);
+    public abstract Aluno remover(String identificador, boolean id);
     public abstract void expandir ();
 }

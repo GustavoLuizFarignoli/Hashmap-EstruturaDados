@@ -21,7 +21,7 @@ public class Hash2 extends HashPai {
     }
 
     @Override
-    public Aluno remover(String matricula) {
+    public Aluno remover(String identificador, boolean id) {
         return null;
     }
 }

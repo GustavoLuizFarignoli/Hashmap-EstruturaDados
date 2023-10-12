@@ -69,7 +69,42 @@ public class Hash1 extends HashPai {
     }
 
     @Override
-    public Aluno remover(String matricula) {
+    public Aluno remover(String identificador, boolean id) {
+        int posicao = func_hash(identificador);
+        Aluno encontrado = getaluno(posicao);
+        if (id){
+            if (encontrado != null){
+                if (Integer.parseInt(identificador) == encontrado.getId()){
+                    setaluno(posicao,null);
+                    return encontrado;
+                }
+            }
+            for (int i = 0; i < getTabela().length; i++){
+                if (getaluno(i) != null) {
+                    if (Integer.parseInt(identificador) == getaluno(i).getId()) {
+                        encontrado = getaluno(i);
+                        setaluno(i, null);
+                        return encontrado;
+                    }
+                }
+            }
+        } else {
+            if (encontrado != null){
+                if (identificador == encontrado.getMatricula()){
+                    setaluno(posicao,null);
+                    return encontrado;
+                }
+            }
+            for (int i = 0; i < getTabela().length; i++){
+                if (getaluno(i) != null) {
+                    if (identificador == getaluno(i).getMatricula()){
+                        encontrado = getaluno(i);
+                        setaluno(i, null);
+                        return encontrado;
+                    }
+                }
+            }
+        }
         return null;
     }
 
@@ -79,6 +114,7 @@ public class Hash1 extends HashPai {
         Aluno[] temp = getTabela();
         setTabela(new Aluno[tamanho_novo]);
         setTamanho(tamanho_novo);
+        setN_elementos(0);
         for (int i = 0; i < temp.length; i++){
             if (temp[i] != null){
                 inserir(temp[i]);
