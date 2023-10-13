@@ -37,7 +37,7 @@ class TreeFormatter {
     private List<String> buildLines(ArvoreBusca.No node) {
         if (node == null) return new ArrayList<>();
         List<String> lines = merge(buildLines(node.esquerdo), buildLines(node.direito));
-        int half = String.valueOf(node.valor).length() / 2;
+        int half = String.valueOf(node.aluno.getNome()).length() / 2;
         int i = half;
         if (lines.size() > 0) {
             String line;
@@ -54,7 +54,7 @@ class TreeFormatter {
             }
             lines.set(0, line);
         }
-        lines.add(0, " ".repeat(indent(lines, i - half)) + node.valor);
+        lines.add(0, " ".repeat(indent(lines, i - half)) + node.aluno.getNome());
         lines.add(0, " ".repeat(i + Math.max(0, half - i)) + "*"); // Add a marker for caller
         return lines;
     }

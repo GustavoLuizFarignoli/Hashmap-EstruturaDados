@@ -1,21 +1,35 @@
 package Arvore;
+
+import Hash.Aluno;
+
 public class ArvoreBusca {
     public No raiz;
 
     public static class No{
-        int valor;
+        Aluno aluno;
         No esquerdo = null;
         No direito = null;
 
-        public No(int valor) {
-            this.valor = valor;
-            this.esquerdo = esquerdo;
-            this.direito = direito;
+        public No(Aluno aluno) {
+            this.aluno = aluno;
+        }
+
+        public int valorizar(){
+            int posicao = 0;
+            if (this.aluno.getId() != -1){
+                posicao = this.aluno.getId();
+            } else {
+                for (int i = 0; i < this.aluno.getMatricula().length(); i++){
+                    char c = this.aluno.getMatricula().charAt(i);
+                    posicao += (int) c;
+                }
+            };
+            return posicao;
         }
 
         @Override
         public String toString() {
-            return "Valor: " + valor;
+            return "Valor: " + aluno;
         }
     }
 
@@ -27,7 +41,7 @@ public class ArvoreBusca {
             if (arvore == null) {
                 return novo;
             } else{
-                if (novo.valor < arvore.valor) {
+                if (novo.valorizar() < arvore.valorizar()) {
                     arvore.esquerdo = inserir(arvore.esquerdo, novo);
                 } else {
                     arvore.direito = inserir(arvore.direito, novo);
@@ -40,9 +54,9 @@ public class ArvoreBusca {
         if (arvore == null){
             return false;
         }
-        if (valor < arvore.valor) {
+        if (valor < arvore.valorizar()) {
             return busca(arvore.esquerdo, valor);
-        } else if (valor > arvore.valor){
+        } else if (valor > arvore.valorizar()){
             return busca(arvore.direito, valor);
         } else {
             return true;
@@ -52,9 +66,9 @@ public class ArvoreBusca {
     public No excluir(No arvore, int valor){ //Precisa Conferir se o dado existe na arvore antes de remover, validar no main
         if (arvore == null){
             return null;
-        }else if (valor < arvore.valor){
+        }else if (valor < arvore.valorizar()){
             arvore.esquerdo = (excluir(arvore.esquerdo, valor));
-        } else if (valor > arvore.valor){
+        } else if (valor > arvore.valorizar()){
             arvore.direito = (excluir(arvore.direito, valor));
         }
         else {
@@ -70,7 +84,7 @@ public class ArvoreBusca {
                 // arvore.direito, e começa ir para o esquerdo até você chegar num que não tem filho a esquerda
                 No sucessor = sucessor(arvore.direito);
                 // chamar função de exclusão para esse no
-                excluir(this.raiz,sucessor.valor);
+                excluir(this.raiz,sucessor.aluno.getId()); //TEMPORÁRIO PRECISA MUDAR
                 // criar um no sucessor com a data desse successor, mas com os filhos do no a ser excluido
                 No temp = sucessor;
                 temp.esquerdo = arvore.esquerdo;

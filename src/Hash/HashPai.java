@@ -1,7 +1,6 @@
 package Hash;
 
 public abstract class HashPai {
-    private Aluno[] tabela;
     private int tamanho;
     private int n_elementos = 0;
     private double fator_carga = 0.75;
@@ -19,30 +18,6 @@ public abstract class HashPai {
         }
         posicao = posicao % tamanho;
         return posicao;
-    }
-
-    public boolean temcolisao(int i) {
-        if (this.tabela[i] == null){
-            return false;
-        }
-        return true;
-    }
-
-    public Aluno[] getTabela() {
-        return tabela;
-    }
-
-    public void setTabela(Aluno[] tabela) {
-        this.tabela = tabela;
-    }
-
-    public Aluno getaluno(int i){
-        return this.tabela[i];
-    }
-
-    public void setaluno(int i, Aluno aluno){
-        this.tabela[i] = aluno;
-        this.n_elementos += 1;
     }
 
     public int getTamanho() {
@@ -72,5 +47,4 @@ public abstract class HashPai {
     public abstract void inserir (Aluno aluno);
     public abstract Aluno buscar (String identificador,boolean id);
     public abstract Aluno remover(String identificador, boolean id);
-    public abstract void expandir ();
 }

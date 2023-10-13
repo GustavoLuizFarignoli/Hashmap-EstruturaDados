@@ -1,6 +1,7 @@
 package Hash;
 
 public class Hash1 extends HashPai {
+    private Aluno[] tabela;
 
     public Hash1(int tamanho) {
         setTabela(new Aluno[tamanho]);
@@ -15,7 +16,6 @@ public class Hash1 extends HashPai {
         } else {
             posicao = func_hash(aluno.getMatricula());
         }
-
         if (temcolisao(posicao)){
             if (verificarcarga()){
                 expandir();
@@ -108,7 +108,6 @@ public class Hash1 extends HashPai {
         return null;
     }
 
-    @Override
     public void expandir(){
         int tamanho_novo = getTamanho() * 2;
         Aluno[] temp = getTabela();
@@ -120,5 +119,29 @@ public class Hash1 extends HashPai {
                 inserir(temp[i]);
             }
         }
+    }
+
+    public boolean temcolisao(int i) {
+        if (this.tabela[i] == null){
+            return false;
+        }
+        return true;
+    }
+
+    public Aluno[] getTabela() {
+        return tabela;
+    }
+
+    public void setTabela(Aluno[] tabela) {
+        this.tabela = tabela;
+    }
+
+    public Aluno getaluno(int i){
+        return this.tabela[i];
+    }
+
+    public void setaluno(int i, Aluno aluno){
+        this.tabela[i] = aluno;
+        setN_elementos(getN_elementos()+1);
     }
 }
