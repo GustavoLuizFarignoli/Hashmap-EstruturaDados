@@ -15,16 +15,20 @@ public class ArvoreBusca {
         }
 
         public int valorizar(){
-            int posicao = 0;
+            int valor = 0;
             if (this.aluno.getId() != -1){
-                posicao = this.aluno.getId();
+                valor = this.aluno.getId();
             } else {
                 for (int i = 0; i < this.aluno.getMatricula().length(); i++){
                     char c = this.aluno.getMatricula().charAt(i);
-                    posicao += (int) c;
+                    valor += (int) c;
                 }
-            };
-            return posicao;
+            }
+            return valor;
+        }
+
+        public Aluno getAluno() {
+            return aluno;
         }
 
         @Override
@@ -50,16 +54,16 @@ public class ArvoreBusca {
         }
         return arvore;
     }
-    public Boolean busca(No arvore, int valor){
+    public No busca(No arvore, int valor){
         if (arvore == null){
-            return false;
+            return null;
         }
         if (valor < arvore.valorizar()) {
             return busca(arvore.esquerdo, valor);
         } else if (valor > arvore.valorizar()){
             return busca(arvore.direito, valor);
         } else {
-            return true;
+            return arvore;
         }
     }
 
@@ -84,7 +88,7 @@ public class ArvoreBusca {
                 // arvore.direito, e começa ir para o esquerdo até você chegar num que não tem filho a esquerda
                 No sucessor = sucessor(arvore.direito);
                 // chamar função de exclusão para esse no
-                excluir(this.raiz,sucessor.aluno.getId()); //TEMPORÁRIO PRECISA MUDAR
+                excluir(this.raiz,sucessor.valorizar()); //TEMPORÁRIO PRECISA MUDAR
                 // criar um no sucessor com a data desse successor, mas com os filhos do no a ser excluido
                 No temp = sucessor;
                 temp.esquerdo = arvore.esquerdo;
