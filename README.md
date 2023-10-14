@@ -9,10 +9,13 @@ O Código conta com 4 classes principais:</br>
 - HashPai <br>
 - Hash1 <br>
 - Hash2 <br>
-- ...
+- Aluno
 <h3>HashPai</h3>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+A classe HashPai é uma classe abstrata que serve como base para as classes Hash1 e Hash2.  Esta classe define algumas propriedades fundamentais e métodos que são comuns às tabelas hash, porém deixa os detalhes específicos de inserção, busca e remoção para serem definidos em suas subclasses. Seus atributos são:
+- tamanho
+- n_elementos
+- fator_carga
 
 <h3>Hash1</h3>
 
@@ -36,8 +39,8 @@ O método de expansão é invocado quando a tabela hash está próxima da sua ca
 
 <h3>Hash2</h3>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Assim como a classe Hash1, a classe Hash2 também herda da classe abstrata HashPai e implementa seus métodos abstratos. No entanto, a classe Hash2 utiliza árvores de busca binária para lidar com colisões, o que permite que a tabela de hash lide com colisões de forma mais eficiente
 
-<h3>...</h3>
+<h3>Aluno</h3>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+A classe Aluno serve como uma representação de um aluno, contendo informações essenciais como ID, matrícula e nome. A classe tem dois construtores que permitem criar um objeto Aluno usando um ID ou uma matrícula, com o nome sendo um requisito em ambos os casos. Se construído usando uma matrícula, o ID é inicialmente definido como -1, indicando que não foi fornecido.
