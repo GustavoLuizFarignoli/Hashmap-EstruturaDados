@@ -41,6 +41,7 @@ public class Hash1 extends HashPai {
         if (id){
             if (encontrado != null){
                 if (Integer.parseInt(identificador) == encontrado.getId()){
+                    System.out.println("Aluno encontrado");
                     return encontrado;
                 }
             }
