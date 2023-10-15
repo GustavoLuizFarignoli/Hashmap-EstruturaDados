@@ -206,7 +206,13 @@ public class Main {
                                 }
                             }
                             for (int i = 0; i < hash2.getTabela().length; i++) {
-                                System.out.println(i + " - " + hash2.getTabela()[i]);
+                                System.out.println(i + ":");
+                                if (hash2.getTabela()[i].raiz != null){
+                                    hash2.getTabela()[i].imprimir();
+                                } else {
+                                    System.out.println("Arvore Vazia");
+                                }
+                                System.out.println("===========================");
                             }
                             break;
                         case 2:// Função de Busca - Hash2
@@ -282,10 +288,14 @@ public class Main {
                             break;
                         case 4:
                             for (int i = 0; i < hash2.getTabela().length; i++) {
-                            if (hash1.getTabela()[i] != null){
-                                System.out.println(i + " - " + hash2.getTabela()[i]);
+                                System.out.println(i + ":");
+                                if (hash2.getTabela()[i].raiz != null){
+                                    hash2.getTabela()[i].imprimir();
+                                } else {
+                                    System.out.println("Arvore Vazia");
+                                }
+                                System.out.println("===========================");
                             }
-                        }
                             break;
                         case 5:
                             System.out.println("Saindo...");
