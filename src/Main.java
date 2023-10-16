@@ -64,6 +64,12 @@ public class Main {
                                     default:
                                         System.out.println("Valor Inválido.\nInsira um valor válido.");
                                         break;
+
+                                }
+                                for (int j = 0; j < hash1.getTabela().length; j++) {
+                                    if (hash1.getTabela()[j] != null){
+                                        System.out.println(j + " - " + hash1.getTabela()[j]);
+                                    }
                                 }
                             }
                             break;
@@ -142,6 +148,9 @@ public class Main {
                             for (int i = 0; i < hash1.getTabela().length; i++) {
                                 if (hash1.getTabela()[i] != null){
                                     System.out.println(i + " - " + hash1.getTabela()[i]);
+                                }
+                                else{
+                                    System.out.println("Não há valor para essa posição!");
                                 }
                             }
                             break;
@@ -337,11 +346,15 @@ public class Main {
         }
     }
     public static void removeraluno_hash2 (String s, boolean usarid, Hash2 hash2){
-        Aluno removido_hash2 = hash2.remover(s, usarid);
-        if (removido_hash2 == null){
+        Aluno removido1_hash2 = hash2.buscar(s, usarid);
+        if (removido1_hash2 == null){
             System.out.println("Aluno não encontrado.");
         } else {
-            System.out.println("Nome: " + removido_hash2.getNome() + "; Matricula: " + removido_hash2.getMatricula() + "; ID:" + removido_hash2.getId());
+            System.out.println("Nome: " + removido1_hash2.getNome() + "; Matricula: " + removido1_hash2.getMatricula() + "; ID:" + removido1_hash2.getId());
+        }
+        Aluno removido_hash2 = hash2.remover(s, usarid);
+        if (removido_hash2 == null){
+            System.out.println("Aluno removido");
         }
     }
 }
